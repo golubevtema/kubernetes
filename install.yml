@@ -6,9 +6,9 @@
         path: /etc/hosts
         line: "{{ item }}"
       loop:
-        - 192.168.123.120	kubemaster
-        - 192.168.123.121	kube2
-        - 192.168.123.122	kube3
+        - 192.168.123.120 kubemaster
+        - 192.168.123.121 kube2
+        - 192.168.123.122 kube3
 
     - name: Disable swapoff
       shell: swapoff -a
