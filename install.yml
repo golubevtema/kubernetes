@@ -1,4 +1,4 @@
-- hosts: kubernetes
+- hosts: all
 
   tasks:
     - name: Add machines to hosts file
@@ -66,3 +66,9 @@
       loop:
         - kubelet
         - kubeadm
+
+- hosts: master
+  tasks:
+    - name: Install kubectl
+      apt:
+        name: kubectl
