@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: kubernetes
 
   tasks:
     - name: Add machines to hosts file
@@ -60,15 +60,10 @@
         state: present
         update_cache: yes
 
-    - name: Install kubelet, kubeadm
+    - name: Install kubelet, kubeadm on all nodes
       apt:
         name: "{{ item }}"
       loop:
         - kubelet
         - kubeadm
-
-- hosts: master
-  tasks:
-    - name: Install kubectl
-      apt:
-        name: kubectl
+        - kubectl
