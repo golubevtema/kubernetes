@@ -1,5 +1,4 @@
 - hosts: kubernetes
-
   tasks:
     - name: Add machines to hosts file
       lineinfile:
@@ -67,3 +66,13 @@
         - kubelet
         - kubeadm
         - kubectl
+
+    - name: Create user kubeadmin
+      user:
+        name: kubeadmin
+        comment: Kubernetes user
+        groups: sudo, docker
+        append: yes
+        shell: /bin/bash
+        home: /home/kubeadmin
+        create_home: yes
