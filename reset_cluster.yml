@@ -1,4 +1,4 @@
 - hosts: kubernetes
   tasks:
     - name: Reset kubernetes cluster
-      shell: kuberadm reset
+      shell: yes | kubeadm reset
