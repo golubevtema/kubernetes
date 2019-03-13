@@ -1,0 +1,16 @@
+- hosts: kubernetes
+  tasks:
+    - name: Create user kubeadmin on all nodes
+      user:
+        name: kubeadmin
+        comment: Kubernetes user
+        groups: sudo, docker
+        append: yes
+        shell: /bin/bash
+        home: /home/kubeadmin
+        create_home: yes
+
+    - name: Change sudo settings to NOPASSWD
+      lineinfile:
+        dest: /etc/sudoers
+        line: '%sudo ALL=(ALL:ALL) NOPASSWD:ALL'
